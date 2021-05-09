@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:krl_access_clone/view/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:krl_access_clone/view/account/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      theme: ThemeData(primarySwatch: Colors.orange),
+      theme: ThemeData(
+        textTheme: GoogleFonts.openSansTextTheme(),
+        primarySwatch: Colors.orange,
+      ),
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:krl_access_clone/const.dart';
 import 'package:krl_access_clone/view/home_screen/card_page.dart';
-import 'package:krl_access_clone/view/login_page.dart';
+import 'package:krl_access_clone/view/account/login_page.dart';
 
 class RoutePage extends StatelessWidget {
   @override
@@ -191,7 +191,7 @@ class TrainLine extends StatelessWidget {
                       Text(
                         lineDestination,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: kPrimaryBlack,
                         ),
@@ -205,6 +205,7 @@ class TrainLine extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: kPrimaryBlack,
+                      letterSpacing: 0.5,
                     ),
                   ),
                   SizedBox(height: 10),
@@ -216,6 +217,7 @@ class TrainLine extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
                   color: kPrimaryBlack,
+                  letterSpacing: 0.5,
                 ),
               ),
             ],
@@ -230,7 +232,7 @@ class TrainLine extends StatelessWidget {
                     "Also at $nextTrainTime (Scheduled)",
                     style: TextStyle(
                       fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w400,
                       color: kPrimaryBlack,
                     ),
                   ),
@@ -240,6 +242,7 @@ class TrainLine extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: kPrimaryBlack,
+                      letterSpacing: 0.5,
                     ),
                   ),
                 ],
@@ -282,9 +285,10 @@ class DepArrStation extends StatelessWidget {
               Text(
                 stationName,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: kPrimaryBlack,
+                  letterSpacing: 0.5,
                 ),
               ),
               Text(
@@ -307,11 +311,12 @@ class DepArrStation extends StatelessWidget {
                     color: kPrimaryColor,
                   ),
                   Text(
-                    " Current condition: ",
+                    " Condition: ",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: kPrimaryColor,
+                      letterSpacing: 0.5,
                     ),
                   ),
                   Text(

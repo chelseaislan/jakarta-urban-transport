@@ -4,7 +4,7 @@ import 'package:krl_access_clone/const.dart';
 import 'package:krl_access_clone/controller/profile_controller.dart';
 import 'package:krl_access_clone/view/home_screen/card_page.dart';
 
-import '../login_page.dart';
+import '../account/login_page.dart';
 
 class AccountPage extends StatelessWidget {
   @override
@@ -113,10 +113,10 @@ class ProfileSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onItemTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -131,9 +131,10 @@ class ProfileSettings extends StatelessWidget {
                 Text(
                   buttonText,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: kPrimaryBlack,
+                    letterSpacing: 0.5,
                   ),
                 ),
               ],

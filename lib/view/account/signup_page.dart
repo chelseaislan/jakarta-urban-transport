@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:krl_access_clone/view/login_page.dart';
+import 'package:krl_access_clone/controller/navbar_controller.dart';
+import 'package:krl_access_clone/view/account/login_page.dart';
 
-import '../const.dart';
+import '../../const.dart';
 
 class SignupPage extends StatelessWidget {
   @override
@@ -47,19 +48,22 @@ class SignupPage extends StatelessWidget {
               ),
 
               Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 10),
-                  child:
-                      Text("I agree to the Terms of Use and Privacy Policy.")),
+                alignment: Alignment.center,
+                padding: EdgeInsets.only(top: 60, bottom: 10),
+                child: Text("I agree to the Terms of Use and Privacy Policy."),
+              ),
               // Potensial buat pake MVC
               ElevatedButtonFill(
                 myPrimary: kPrimaryColor,
-                onItemPressed: () {},
+                onItemPressed: () {
+                  Get.offAll(() => HomeNavBar());
+                },
                 myText: "Create Account",
                 textColor: kWhite,
               ),
               TextButton(
                 onPressed: () {
-                  Get.offAll(LoginPage());
+                  Get.offAll(() => LoginPage());
                 },
                 child: Text("Already registered? Sign in here."),
               ),

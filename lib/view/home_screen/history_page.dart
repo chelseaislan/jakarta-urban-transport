@@ -29,9 +29,9 @@ class HistoryPage extends StatelessWidget {
                     colors: [
                       kWhite,
                       controller.tripHistory[index].iconColor
-                          .withRed(255)
-                          .withGreen(247)
-                          .withBlue(219)
+                          .withRed(230)
+                          .withGreen(230)
+                          .withBlue(230)
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -47,40 +47,9 @@ class HistoryPage extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: kWhite,
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 3,
-                            spreadRadius: 0.5,
-                            color: kPrimaryGrey,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Icon(
-                            controller.tripHistory[index].cardIcon,
-                            color: controller.tripHistory[index].iconColor,
-                            size: 30,
-                          ),
-                          Text(
-                            controller.tripHistory[index].cardIcon ==
-                                    Icons.subway_rounded
-                                ? "MRT"
-                                : "KRL",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: kPrimaryBlack,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    TrainIcons(
+                        cardIcon: controller.tripHistory[index].cardIcon,
+                        iconColor: controller.tripHistory[index].iconColor),
                     SizedBox(width: 15),
                     Flexible(
                       child: Container(
@@ -90,24 +59,32 @@ class HistoryPage extends StatelessWidget {
                             Text(
                               controller.tripHistory[index].title,
                               style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
                                 color: kSecondaryBlack,
                               ),
                             ),
+                            SizedBox(height: 3),
                             Text(
                               controller.tripHistory[index].description,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 color: kPrimaryBlack,
+                                letterSpacing: 0.5,
                               ),
                             ),
                             SizedBox(height: 3),
                             Text(
-                                "${controller.tripHistory[index].date}, ${controller.tripHistory[index].time}"),
+                              "${controller.tripHistory[index].date}, ${controller.tripHistory[index].time}",
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: kPrimaryBlack,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -118,6 +95,61 @@ class HistoryPage extends StatelessWidget {
             },
           );
         },
+      ),
+    );
+  }
+}
+
+class TrainIcons extends StatelessWidget {
+  const TrainIcons({
+    Key key,
+    @required this.cardIcon,
+    @required this.iconColor,
+  }) : super(key: key);
+
+  final IconData cardIcon;
+  final Color iconColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: kWhite,
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 3,
+            spreadRadius: 0.5,
+            color: kPrimaryGrey,
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Icon(
+            cardIcon,
+            color: iconColor,
+            size: 30,
+          ),
+          Text(
+            cardIcon == Icons.subway_rounded
+                ? "MRT"
+                : cardIcon == Icons.train_rounded
+                    ? "KRL"
+                    : cardIcon == Icons.subway_outlined
+                        ? "LRT"
+                        : cardIcon == Icons.directions_bus_rounded
+                            ? "TJ"
+                            : "JAK",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: kPrimaryBlack,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ],
       ),
     );
   }

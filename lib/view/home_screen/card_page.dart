@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:krl_access_clone/const.dart';
 import 'package:krl_access_clone/controller/card_history_controller.dart';
-import 'package:krl_access_clone/view/login_page.dart';
+import 'package:krl_access_clone/view/account/login_page.dart';
+import 'package:krl_access_clone/view/other_screens/recent_activity.dart';
+import 'package:krl_access_clone/view/other_screens/top_up_page.dart';
 
 class CardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var mySize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kWhite,
       appBar: NavAppBar(
@@ -30,7 +33,7 @@ class CardPage extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             padding: EdgeInsets.all(20),
-            height: 200,
+            height: mySize.height * 0.3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               gradient: LinearGradient(
@@ -49,7 +52,7 @@ class CardPage extends StatelessWidget {
                     Text(
                       "Multi Trip Card",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                         color: kWhite,
                       ),
@@ -57,9 +60,10 @@ class CardPage extends StatelessWidget {
                     Text(
                       "4356 2058 3054 1982",
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: kWhite,
+                        letterSpacing: 1.5,
                       ),
                     ),
                   ],
@@ -70,13 +74,19 @@ class CardPage extends StatelessWidget {
                     Row(
                       children: [
                         CardIcons(
-                          cardIconData: Icons.subway_rounded,
-                        ),
-                        CardIcons(
                           cardIconData: Icons.train_rounded,
                         ),
                         CardIcons(
-                          cardIconData: Icons.tram_rounded,
+                          cardIconData: Icons.subway_rounded,
+                        ),
+                        CardIcons(
+                          cardIconData: Icons.subway_outlined,
+                        ),
+                        CardIcons(
+                          cardIconData: Icons.directions_bus_rounded,
+                        ),
+                        CardIcons(
+                          cardIconData: Icons.directions_car_rounded,
                         ),
                       ],
                     ),
@@ -113,19 +123,21 @@ class CardPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "My KMT Balance",
+                      "My Balance",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: kPrimaryBlack,
                       ),
                     ),
+                    SizedBox(height: 3),
                     Text(
                       "Rp123",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: kPrimaryBlack,
+                        letterSpacing: 0.5,
                       ),
                     ),
                   ],
@@ -133,7 +145,9 @@ class CardPage extends StatelessWidget {
                 ElevatedButtonFill(
                   myPrimary: kPrimaryColor,
                   myText: "Top-Up",
-                  onItemPressed: () {},
+                  onItemPressed: () {
+                    Get.to(() => TopUpPage());
+                  },
                   textColor: kWhite,
                 ),
               ],
@@ -159,9 +173,10 @@ class CardPage extends StatelessWidget {
                 Text(
                   "Recent activity",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: kPrimaryBlack,
+                    letterSpacing: 0.5,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -197,9 +212,10 @@ class CardPage extends StatelessWidget {
                                       Text(
                                         controller.cardHistory[index].title,
                                         style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w600,
                                           color: kPrimaryBlack,
+                                          letterSpacing: 0.5,
                                         ),
                                       ),
                                       Text(
@@ -211,7 +227,8 @@ class CardPage extends StatelessWidget {
                               Text(
                                 "Rp${controller.cardHistory[index].price}",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
+                                  letterSpacing: 0.5,
                                   fontWeight: FontWeight.w600,
                                   color:
                                       controller.cardHistory[index].cardIcon ==
@@ -232,7 +249,9 @@ class CardPage extends StatelessWidget {
                   child: ElevatedButtonFill(
                     myPrimary: kPrimaryColor,
                     myText: "View More",
-                    onItemPressed: () {},
+                    onItemPressed: () {
+                      Get.to(() => RecentActivity());
+                    },
                     textColor: kWhite,
                   ),
                 ),
@@ -262,6 +281,7 @@ class NavAppBar extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: appBarColor,
       centerTitle: false,
       elevation: 0,
+      iconTheme: IconThemeData(color: textColor),
       title: Text(
         appBarText,
         style: TextStyle(
@@ -272,9 +292,9 @@ class NavAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.help_outline_rounded, color: textColor),
+          icon: Icon(Icons.support_agent_outlined, color: textColor),
           onPressed: () {},
-          tooltip: "FAQ",
+          tooltip: "Live Chat",
         ),
       ],
     );

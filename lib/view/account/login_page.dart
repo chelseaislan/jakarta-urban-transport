@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:krl_access_clone/const.dart';
 import 'package:krl_access_clone/controller/navbar_controller.dart';
-import 'package:krl_access_clone/view/signup_page.dart';
+import 'package:krl_access_clone/view/account/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -44,12 +44,12 @@ class LoginPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 60),
               // Potensial buat pake MVC
               ElevatedButtonFill(
                 myPrimary: kPrimaryColor,
                 onItemPressed: () {
-                  Get.offAll(HomeNavBar());
+                  Get.offAll(() => HomeNavBar());
                 },
                 myText: "Sign In",
                 textColor: kWhite,
@@ -68,7 +68,7 @@ class LoginPage extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  Get.offAll(SignupPage());
+                  Get.offAll(() => SignupPage());
                 },
                 child: Text("New user? Sign up here."),
               ),
@@ -119,9 +119,10 @@ class ElevatedButtonLogo extends StatelessWidget {
             Text(
               myText,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: kWhite,
+                letterSpacing: 0.5,
               ),
             ),
           ],
@@ -161,9 +162,10 @@ class ElevatedButtonFill extends StatelessWidget {
         child: Text(
           myText,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w600,
             color: textColor,
+            letterSpacing: 0.5,
           ),
         ),
       ),
